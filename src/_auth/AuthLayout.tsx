@@ -1,6 +1,7 @@
 import { Outlet, Navigate } from "react-router-dom";
 
 const AuthLayout = () => {
+  // will create dynamic function to check later
   const isAuthenticated = false;
 
   return (
@@ -16,7 +17,11 @@ const AuthLayout = () => {
             <Outlet />
           </section>
 
-          <img src="" />
+          <img
+            src="/assets/images/side-img.svg"
+            alt="logo"
+            className="hidden xl:block h-screen w-1/2 object-cover bg-no-repeat"
+          />
         </>
       )}
     </>
