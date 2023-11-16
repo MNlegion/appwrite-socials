@@ -6,7 +6,7 @@ import {
   Form,
   FormControl,
   FormDescription,
-  FormField,
+  FormField, 
   FormItem,
   FormLabel,
   FormMessage,
@@ -16,9 +16,10 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { SignupValidation } from "@/lib/validation";
 import { Loader } from "lucide-react";
+import { createUserAccount } from "@/lib/appwrite/api";
 
 const SignupForm = () => {
-  const isLoading = false;
+  const isLoading = true;
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignupValidation>>({
@@ -32,10 +33,11 @@ const SignupForm = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof SignupValidation>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof SignupValidation>) {
+    // Create a new user
+    const newUser = await createUserAccount(values);
+
+    console.log(newUser);
   }
 
   return (
@@ -59,7 +61,7 @@ const SignupForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>Full Name</FormLabel>
                 <FormControl>
                   <Input type="text" className="shad-input" {...field} />
                 </FormControl>

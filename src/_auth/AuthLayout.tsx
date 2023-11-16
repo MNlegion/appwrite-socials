@@ -2,7 +2,7 @@ import { Outlet, Navigate } from "react-router-dom";
 
 const AuthLayout = () => {
   // will create dynamic function to check later
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   return (
     <>
@@ -10,10 +10,7 @@ const AuthLayout = () => {
         <Navigate to="/" />
       ) : (
         <>
-          <section
-            className="flex flex-1 justify-center items-center flex-col
-          py-10"
-          >
+          <section className="flex flex-1 justify-center items-center flex-col py-10">
             <Outlet />
           </section>
 
